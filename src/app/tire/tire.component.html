@@ -1,0 +1,78 @@
+<div class="container-fluid" style="padding: 20px;">
+  <div class="row">
+    <div class="col-6 float-left">
+      <button type="button" (click)='onSelectTire()' *ngIf='!start' class="btn btn-primary mt-2 float-start">Select Tire</button>
+    </div>
+    <div class="col-6 float-right">
+      <button type="button" (click)='onReset()' class="btn btn-warning mt-2 float-end">Reset</button>
+    </div>
+  </div>
+
+  <div *ngIf='year' style="color: white; padding: 3%; margin-top: 20px; background-color: gray; border-radius: 15px;">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 text-center">
+        <h4>Year: {{ year }}</h4>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center" *ngIf='make'>
+        <h4>Make: {{ make }}</h4>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center" *ngIf='model'>
+        <h4>Model: {{ model }}</h4>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center" *ngIf='trim'>
+        <h4>Trim: {{ trim }}</h4>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf='year$ | async'>
+    <div style="padding-top: 20px;">
+      <h1>Select Year</h1>
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-4 text-center" *ngFor='let entry of year$ | async'>
+          <button type="button" (click)='onSelectYear(entry)' class="btn btn-light mt-1">{{ entry }}</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf='make$ | async'>
+    <div style="padding-top: 20px;">
+      <h1>Select Make</h1>
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-4  text-center" *ngFor='let entry of make$ | async'>
+          <button type="button" (click)='onSelectMake(entry)' class="btn btn-light mt-1">{{ entry }}</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf='model$ | async'>
+    <div style="padding-top: 20px;">
+      <h1>Select Model</h1>
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-4  text-center" *ngFor='let entry of model$ | async'>
+          <button type="button" (click)='onSelectModel(entry)' class="btn btn-light mt-1">{{ entry }}</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf='trim$ | async'>
+    <div style="padding-top: 20px;">
+      <h1>Select Trim</h1>
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-4  text-center" *ngFor='let entry of trim$ | async'>
+          <button type="button" (click)='onSelectTrim(entry)' class="btn btn-light mt-1">{{ entry }}</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf='trim'>
+    <div style="padding-top: 20px;">
+      <img height="100%" width="100%" src='https://lh3.googleusercontent.com/proxy/eEkRg3kEWSGaXCsDwBQ0ZbOIJ6x9KUKy81eJHBWu7Mvll5kmvfEXO6N1V3cnY_E9qfUtBwC4z-Vqwm-btF0qL-dCMT3w8uNECbQi813QPGzhmksKCmr9WzheChwbrp1F'>
+    </div>
+  </ng-container>
+
+</div>
